@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101610">
+<meta name="description" content="Uma aventura de Ciências para o 6º ano. Explore mundos, enfrente guardiões e vença com conhecimento.">
+<title>Missão Cientista — Academia Arcade</title>
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="./index.html"><span class="brand-icon" aria-hidden="true">MC</span>MISSÃO<span>CIENTISTA</span></a><span class="school-tag">CIÊNCIAS / 6º ANO</span><button id="sound" class="quiet" aria-pressed="false">SOM: OFF · ATIVAR</button></header>
+<main>
+<section id="home" class="screen">
+<div class="hero"><div class="hero-copy"><div class="eyebrow"><span class="live-dot"></span> APRENDER É O SEU SUPERPODER</div><h1>PEQUENO<br>CIENTISTA.<br><span>GRANDE MISSÃO.</span></h1><p>O conhecimento foi capturado. Explore quatro mundos, desafie seus guardiões e use a Ciência para vencer o chefão final.</p><button id="explore" class="primary">COMEÇAR A MISSÃO <span aria-hidden="true">↗</span></button><div class="hero-meta"><span>05 FASES</span><span>03 DIFICULDADES</span><span>100% CURIOSIDADE</span></div></div>
+<div class="hero-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><span class="art-label">LABORATÓRIO DE AVENTURAS / 001</span><canvas id="preview" width="520" height="460" aria-label="Prévia ilustrada da aventura espacial"></canvas><div class="art-caption"><span class="live-dot"></span> SISTEMA PRONTO PARA EXPLORAR</div><span class="floating-tag">CONHECIMENTO + PODER</span></div></div>
+<div class="ticker" aria-hidden="true">EXPLORE O UNIVERSO <b>✦</b> DESVIE DOS ATAQUES <b>✦</b> RESPONDA E EVOLUA <b>✦</b> VENÇA COM CIÊNCIA <b>✦</b></div>
+<section class="setup" id="setup"><div class="section-heading"><div><div class="eyebrow">01 / PREPARE SUA JORNADA</div><h2>Qual é o seu desafio?</h2></div><p>A dificuldade muda os ataques e as perguntas.<br>Cada personagem tem sua própria campanha salva.</p></div>
+<div class="difficulty" role="group" aria-label="Escolha a dificuldade">
+<button data-diff="easy"><span class="card-number">01 / EXPLORADOR</span><strong>Fácil</strong><span>Mais tempo para aprender.<br>Ataques tranquilos e perguntas diretas.</span><span class="difficulty-meter">▰ ▱ ▱</span></button>
+<button data-diff="medium" class="selected" aria-pressed="true"><span class="card-number">02 / AVENTUREIRO</span><strong>Médio</strong><span>Um desafio na medida.<br>Mais movimento e interpretação.</span><span class="difficulty-meter">▰ ▰ ▱</span></button>
+<button data-diff="hard"><span class="card-number">03 / ESPECIALISTA</span><strong>Difícil</strong><span>Prepare seus reflexos.<br>Ataques intensos e raciocínio científico.</span><span class="difficulty-meter">▰ ▰ ▰</span></button></div>
+<div class="character-row"><div><div class="eyebrow">ESCOLHA SEU PERSONAGEM</div><p>Sprites clássicos incorporados. Sem redesenhos.</p></div><div id="characters" class="characters" role="group" aria-label="Personagem"><button data-char="mario" class="selected"><canvas class="character-portrait" data-portrait="mario" width="144" height="168" aria-hidden="true"></canvas><span>Mario</span></button><button data-char="dk"><canvas class="character-portrait" data-portrait="dk" width="144" height="168" aria-hidden="true"></canvas><span>Donkey Kong</span></button><button data-char="ryu"><canvas class="character-portrait" data-portrait="ryu" width="144" height="168" aria-hidden="true"></canvas><span>Ryu</span></button></div></div>
+<div class="sprite-lab"><div class="sprite-lab-title"><span class="eyebrow">SPRITES CLÁSSICOS / PIXELS PRESERVADOS</span><p>Mario: SMW · Donkey Kong: DKC · Ryu: SFII.</p></div><div class="pose-picker" role="group" aria-label="Prévia de animação"><button data-pose="idle" aria-pressed="true" class="selected">Espera</button><button data-pose="run" aria-pressed="false" class="">Corrida</button><button data-pose="jump" aria-pressed="false" class="">Pulo</button><button data-pose="shoot" aria-pressed="false" class="">Tiro</button><button data-pose="dash" aria-pressed="false" class="">Esquiva</button><button data-pose="hurt" aria-pressed="false" class="">Dano</button></div></div></section>
+<section class="journey"><div class="section-heading"><div><div class="eyebrow">02 / MAPA DA MISSÃO</div><h2>O caminho do conhecimento.</h2></div><span id="progress-label" class="pill">0 / 5 CONCLUÍDAS</span></div><div id="map" class="map"></div><div class="map-bottom"><p>Vença cada guardião para desbloquear o próximo mundo.</p><button id="reset" class="quiet">REINICIAR PROGRESSO</button></div></section>
+<section class="manual"><div><span class="eyebrow">COMO JOGAR</span><h2>Reflexos de herói.<br>Cabeça de cientista.</h2></div><article><span>01</span><h3>Mova e desvie</h3><p>A / D ou setas para andar. W ou seta para cima para pular. Shift para uma esquiva rápida.</p></article><article><span>02</span><h3>Atire e responda</h3><p>Segure Espaço para atirar. Durante as perguntas, o tiro é automático e o mundo fica mais lento. Use 1–4 ou toque na resposta. Colete poderes e use H / J / K.</p></article><article><span>03</span><h3>Domine a Ciência</h3><p>Errou? Leia a explicação e tente de novo. No chefão final, acerte duas perguntas de cada mundo sem errar.</p></article></section>
+</section>
+<section id="play" class="screen" hidden>
+<div class="play-heading"><button id="back" class="quiet">← MAPA</button><span id="stage-label" class="eyebrow"></span><button id="pause" class="quiet">PAUSAR [P]</button></div>
+<div class="battle-layout"><div class="arena-shell"><div class="hud"><div><span>SEU ESCUDO</span><div class="bar"><i id="hp"></i></div></div><span id="combo" class="pill">CIÊNCIA EM AÇÃO</span><div><span id="boss-label">GUARDIÃO</span><div class="bar boss-bar"><i id="boss-hp"></i></div></div></div><canvas id="game" width="1000" height="560" tabindex="0" aria-label="Arena de combate. Setas para mover, seta para cima para pular, Espaço para atirar e Shift para esquivar."></canvas><div class="arena-footer"><span id="battle-tip">ESPAÇO: ATIRAR / W: PULAR / SHIFT: ESQUIVAR</span><span id="phase-label">FASE 01</span></div><div id="pause-panel" class="arena-overlay" hidden><div><span class="eyebrow">RESPIRE. VOCÊ CONSEGUE.</span><h2>Missão pausada.</h2><button id="resume" class="primary">CONTINUAR</button></div></div></div>
+<aside class="quiz-panel"><div class="eyebrow">CENTRAL DE CONHECIMENTO</div><div id="quiz-idle"><div class="atom" aria-hidden="true">◎</div><h2>Carregue seu conhecimento.</h2><p>Acerte o guardião com seus tiros para revelar um desafio. A resposta certa rompe o escudo dele.</p><div class="note">Enquanto você responde, os ataques ficam mais lentos e seu personagem atira automaticamente.</div></div><div id="quiz-active" hidden><span id="question-count" class="pill"></span><h2 id="question" tabindex="-1"></h2><div id="answers"></div><p id="feedback" role="status" aria-live="polite"></p><button id="next-question" class="primary" hidden>CONTINUAR</button></div><div class="power-inventory"><div class="eyebrow">MOCHILA DE PODERES <span id="power-rule"></span></div><div class="power-buttons"><button data-power="hint"><b>DICA</b><span>H · <i data-count="hint">0</i></span></button><button data-power="skip"><b>PULAR</b><span>J · <i data-count="skip">0</i></span></button><button data-power="swap"><b>TROCAR</b><span>K · <i data-count="swap">0</i></span></button></div><p id="power-status" role="status" aria-live="polite">Colete as cápsulas coloridas na arena.</p></div><div class="quiz-bottom"><span>FINAL: SÓ DICAS.</span><span>PENSE, APRENDA, VENÇA.</span></div></aside></div>
+<div class="touch-controls" aria-label="Controles de toque"><div><button data-key="ArrowLeft" aria-label="Andar para esquerda">◀</button><button data-key="ArrowRight" aria-label="Andar para direita">▶</button></div><div><button data-key="ArrowUp">PULAR</button><button data-key="Shift">ESQUIVA</button><button data-key=" " class="fire">TIRO</button></div></div>
+</section>
+<section id="result" class="screen result" hidden><div class="eyebrow" id="result-kicker"></div><div class="result-emblem" aria-hidden="true">MC</div><h1 id="result-title"></h1><p id="result-text"></p><div id="result-stats" class="result-stats"></div><div class="result-actions"><button id="result-primary" class="primary">CONTINUAR MISSÃO</button><button id="result-map" class="quiet">VOLTAR AO MAPA</button></div></section>
+</main>
+<footer><span>MISSÃO CIENTISTA <b>© 2026</b></span><span>Projeto escolar · Ciências · 6º ano</span><span>Fan game educativo, não oficial.</span></footer>
+<noscript>Ative o JavaScript para jogar Missão Cientista.</noscript>
+</body></html>
